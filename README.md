@@ -235,7 +235,7 @@ Ya tienes el entorno en funcionamiento y has podido comprobar que todos los test
 
 En la raiz del proyecto tienes **game.php** que es el punto de entrada a la aplicación de consola, se ejecuta como un script php.
 
-El juego ahora funciona al completo, y solo. Cuando ejecutes el comando _make run_ empezara y continuara realizando lanzamientos de dados y movimiento del jugador hasta hacerlo ganar.
+El juego ahora funciona al completo, y solo. Cuando ejecutes el comando _make run_ empezara y continuara realizando lanzamientos de dados y movimientos del jugador hasta hacerlo ganar.
 
 ```
 $ make run
@@ -287,11 +287,11 @@ Player at square: 100
 Player WIN!!!!
 ```
 
+# WIP
 Tambien tienes el parametro __--bysteps__. Usando este parametro el juego, por cada lanzamiento de dados y movimiento, te preguntara si deseas continuar. 
 
 Pulsado la tecla Y + [intro] continuas, y pulsando la tecla N +[intro] el juego termina en ese punto. Esto te permite ver paso a paso com va jugando.
 
-# WIP
 ```
 root@3679266af703:/usr/local/src# php game.php --bysteps
 
