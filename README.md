@@ -144,71 +144,28 @@ Tambien puede configurase _Behat_ para usar _contextos_ diferentes y de esta man
 
 # Ejecutar el proyecto 
 
-Si quieres probarlo una opción es usar el docker que he configurado que lo incluye todo. Este Dockerfile monta un contenedor con PHP 7.4, composer, vim, clona el proyecto con sus dependencias y lo deja listo para lanzar los test y evaluar su funcionamiento. Sin implicaciones en el sistema anfitrión más que disponer de _git_ y _Docker_ instalado.
+Si quieres probarlo puedes usar Docker.
 
 Si no tienes docker en tu sistema lo puedes instalar [con estas instrucciones](https://docs.docker.com/get-docker/) 
 
 ## Ejecutar el Docker y arrancar el entorno
 
-En tu terminal clona este repositorio y luego muevete dentro del directorio _SnakesAndLadders_ y ejecuta estos comandos de Docker.
+En tu terminal clona este repositorio y luego muevete dentro del directorio _SnakesAndLadders_ y ejecuta:
 
 ```
-$ docker-compose build --no-cache && docker-compose up -d --force-recreate
+$ make
 ```
 
-Esto inicializara el contenedor, puede tardar unos minutos, luego ejecuta:
+Esto inicializara el contenedor docker y en el ejecutara composer para descargar todas las librerias necesarias.
+
+Cuando termine puedes:
+
+### Lanzar los test
 
 ```
-$ docker-compose run php /bin/bash
+$ make test
 ```
-Esto te abre una sesión SSH con el contenedor y te situa en el path donde esta clonado todo el proyecto con sus dependencias instaladas, verás algo así:
-
-```
-root@3679266af703:/usr/local/src#
-````
-
-Puedes listar los contenidos de este directorio para confirmar:
-
-````
-root@3679266af703:/usr/local/src# ls -la
-````
-
-Verás algo así:
-
-````
-drwxr-xr-x 1 root root   4096 Jul  4 00:35 .
-drwxr-xr-x 1 root root   4096 Jun 23 08:43 ..
-drwxr-xr-x 8 root root   4096 Jul  4 00:35 .git
--rw-r--r-- 1 root root     25 Jul  4 00:35 .gitignore
--rw-r--r-- 1 root root    387 Jul  4 00:35 Dockerfile
--rw-r--r-- 1 root root  26294 Jul  4 00:35 README.md
--rw-r--r-- 1 root root    635 Jul  4 00:35 composer.json
--rw-r--r-- 1 root root 139382 Jul  4 00:35 composer.lock
--rw-r--r-- 1 root root    120 Jul  4 00:35 docker-compose.yml
-drwxr-xr-x 3 root root   4096 Jul  4 00:35 features
--rw-r--r-- 1 root root    345 Jul  4 00:35 game.php
--rw-r--r-- 1 root root    988 Jul  4 00:35 phpunit.xml
-drwxr-xr-x 4 root root   4096 Jul  4 00:35 src
-````
-
-## Instalar las dependencias
-
-Aquí debes ejecutar:
-```
-root@3679266af703:/usr/local/src# composer update
-```
-
-Esto instalara todas las dependencias necesarias para ejecutar el juego y los tests. Cuando finalize puedes lanzar los test para confirmar que esta todo ok.
-
-## Lanzar los tests 
-
-Para lanzar los tests y ver los resultados con _bin/behat_:
-
-```
-root@3679266af703:/usr/local/src# bin/behat
-````
-
-Esto es lo que te mostrara:
+Esto te mostrara algo similar a:
 
 ```gherkin
 Feature: US 1 - Token Can Move Across the Board
@@ -274,14 +231,14 @@ Indicando que la Libreria desarrollada pasa todo los test de cada US.
 
 Ya tienes el entorno en funcionamiento y has podido comprobar que todos los tests estan en verde! :clap:
 
-## Ejecutar la aplicación 
+### Ejecutar la aplicación 
 
 En la raiz del proyecto tienes **game.php** que es el punto de entrada a la aplicación de consola, se ejecuta como un script php.
 
-El juego ahora funciona al completo, y solo. Cuando ejecutes el comando _php game.php_ empezara y continuara realizando lanzamientos de dados y movimiento del jugador hasta hacerlo ganar.
+El juego ahora funciona al completo, y solo. Cuando ejecutes el comando _make run_ empezara y continuara realizando lanzamientos de dados y movimiento del jugador hasta hacerlo ganar.
 
 ```
-root@3679266af703:/usr/local/src# php game.php 
+$ make run
 ```
 
 El resultado sera algo parecido a esto:
@@ -334,6 +291,7 @@ Tambien tienes el parametro __--bysteps__. Usando este parametro el juego, por c
 
 Pulsado la tecla Y + [intro] continuas, y pulsando la tecla N +[intro] el juego termina en ese punto. Esto te permite ver paso a paso com va jugando.
 
+# WIP
 ```
 root@3679266af703:/usr/local/src# php game.php --bysteps
 
@@ -353,3 +311,4 @@ Player move token 6 squares
 Player at square: 99
 Player at snake square, moved to new position 80
 ````
+# END WIP
