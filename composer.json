@@ -1,5 +1,6 @@
 {
     "name": "danielribes/snakes-and-ladders",
+    "version": "1",
     "description": "Kata SnakesAndLadders con PHP y Behat",
     "require-dev": {
         "behat/behat": "^3.10",

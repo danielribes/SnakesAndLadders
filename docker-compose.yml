@@ -1,7 +1,0 @@
-services:
-  php:
-    container_name: phpkata
-    image: phpkata
-    build:
-      context: .
-      dockerfile: Dockerfile
