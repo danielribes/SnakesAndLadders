@@ -15,6 +15,9 @@ build:
 run:
 	docker run --rm -v $(PWD):/app -w /app $(IMAGE_NAME) php game.php
 
+run-bysteps:
+	docker run --rm -it -v $(PWD):/app -w /app $(IMAGE_NAME) php game.php --bysteps
+
 # Executa els tests Behat
 test:
 	docker run --rm -v $(PWD):/app -w /app $(IMAGE_NAME) bin/behat

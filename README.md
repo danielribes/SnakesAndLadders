@@ -287,13 +287,12 @@ Player at square: 100
 Player WIN!!!!
 ```
 
-# WIP
-Tambien tienes el parametro __--bysteps__. Usando este parametro el juego, por cada lanzamiento de dados y movimiento, te preguntara si deseas continuar. 
+Tambien la opción __run-bysteps__. Usando esta opción el juego, por cada lanzamiento de dados y movimiento, te preguntara si deseas continuar. 
 
-Pulsado la tecla Y + [intro] continuas, y pulsando la tecla N +[intro] el juego termina en ese punto. Esto te permite ver paso a paso com va jugando.
+Pulsado la tecla Y + [intro] continuas, y pulsando la tecla N +[intro] el juego termina en ese punto. Esto te permite ver paso a paso com va jugando:
 
 ```
-root@3679266af703:/usr/local/src# php game.php --bysteps
+$ make run-bysteps
 
 Player at square: 1
 
@@ -311,4 +310,3 @@ Player move token 6 squares
 Player at square: 99
 Player at snake square, moved to new position 80
 ````
-# END WIP
