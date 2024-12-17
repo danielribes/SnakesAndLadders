@@ -1,6 +1,6 @@
 # Introducción
 
-Queria estrenarme con **BDD (Behavior Drive Development)** en PHP y esta Kata de [Snakes And Ladders](https://agilekatas.co.uk/katas/SnakesAndLadders-Kata) es una buena practica para ello en la que las necesidades de negocio descritas como _historias de usuario_ marcan el flujo de tests con los que se va resolviendo.
+Queria estrenarme con **BDD (Behavior Drive Development)** en PHP y esta Kata de [Snakes And Ladders](https://agilekatas.co.uk/) es una buena practica para ello en la que las necesidades de negocio descritas como _historias de usuario_ marcan el flujo de tests con los que se va resolviendo.
 
 En PHP esto se puede llevar a cabo usando el framework [**Behat,**](https://docs.behat.org/en/latest/) que trabaja a partir de historias de usuario (Features) y test de aceptación (Scenarios) descritos con lenguaje Gherkin.
 
