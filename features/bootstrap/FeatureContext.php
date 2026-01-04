@@ -1,11 +1,9 @@
 <?php
-
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
-use PHPUnit\Framework\Assert;
-
+use Webmozart\Assert\Assert; 
 use SnakesAndLadders\Lib\Game;
 
 /**
@@ -42,7 +40,7 @@ class FeatureContext implements Context
      */
     public function theTokenIsPlacedOnTheBoard()
     {
-        Assert::assertEquals('1', $this->player->getPosition());
+        Assert::eq($this->player->getPosition(), '1');  // ← CANVIAT (ordre invertit)
     }
 
     /**
@@ -55,10 +53,8 @@ class FeatureContext implements Context
             $this->theGameIsStarted();
             $this->player->moveToken($arg1-1);  
         } 
-        
-        Assert::assertEquals($arg1, $this->player->getPosition());
+        Assert::eq($this->player->getPosition(), $arg1);  // ← CANVIAT (ordre invertit)
     }
-
 
     /**
      * @When the token is moved :arg1 spaces
@@ -82,7 +78,7 @@ class FeatureContext implements Context
      */
     public function thePlayerHasWonTheGame()
     {
-        Assert::assertTrue($this->player->getWin());
+        Assert::true($this->player->getWin());  // ← CANVIAT
     }
 
     /**
@@ -90,7 +86,7 @@ class FeatureContext implements Context
      */
     public function thePlayerHasNotWonTheGame()
     {
-        Assert::assertFalse($this->player->getWin());
+        Assert::false($this->player->getWin());  // ← CANVIAT
     }
 
     /**
@@ -98,8 +94,7 @@ class FeatureContext implements Context
      */
     public function theResultShouldBeBetweenInclusive($arg1, $arg2)
     {
-        $sides = range($arg1, $arg2);
-        Assert::assertContains($this->diceresult, $sides);
+        Assert::range($this->diceresult, (int)$arg1, (int)$arg2);  // ← CANVIAT (molt més simple!)
     }
 
     /**
@@ -111,18 +106,15 @@ class FeatureContext implements Context
         {
             $this->theGameIsStarted();
         }
-
         if($arg1 == 'die')
         {
             $this->diceresult = $this->player->rollsADie();
         }
-
         if($arg1 != 'die')
         {
             $this->diceresult = $arg1;
         }
     }
-
 
     /**
      * @When they move their token
@@ -132,7 +124,6 @@ class FeatureContext implements Context
         $this->player->moveToken($this->diceresult);    
     }
 
-
     /**
      * @Then the token should move :arg1 spaces
      */
@@ -140,9 +131,7 @@ class FeatureContext implements Context
     {
         $old = $this->player->getOldPosition();
         $new = $this->player->getPosition();
-
         $rslt = $new-$old;
-
-        Assert::assertEquals($arg1, $rslt);
+        Assert::eq($rslt, $arg1);  // ← CANVIAT (ordre invertit)
     }
 }

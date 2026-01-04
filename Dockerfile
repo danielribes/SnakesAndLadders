@@ -1,1 +1,1 @@
-FROM danielribes/php7.4-cli-composer
+FROM danielribes/php8.5-cli-composer
