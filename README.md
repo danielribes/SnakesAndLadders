@@ -153,10 +153,10 @@ Si no tienes docker en tu sistema lo puedes instalar [con estas instrucciones](h
 En tu terminal clona este repositorio y luego muevete dentro del directorio _SnakesAndLadders_ y ejecuta:
 
 ```
-$ make
+$ make build
 ```
 
-Esto inicializara el contenedor docker y en el ejecutara composer para descargar todas las librerias necesarias.
+Esto construye la imagen y arranca el contenedor _docker_ en el que ejecuta _composer_ para descargar todas las librerias necesarias.
 
 Cuando termine puedes:
 
@@ -310,3 +310,10 @@ Player move token 6 squares
 Player at square: 99
 Player at snake square, moved to new position 80
 ````
+
+Esto es todo, para ver un resumen de los comandos disponibles con _make_ puedes hacer:
+
+```
+$ make help
+```
+

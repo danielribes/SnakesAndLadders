@@ -1,23 +1,27 @@
 IMAGE_NAME = snakesandladders
 
-# Objectiu per defecte que fa build i executa composer
-default: composer
+# Default action: show help
+default: help
 
-# Executa Composer després de construir la imatge
-composer: build
-	docker run --rm -v $(PWD):/app -w /app $(IMAGE_NAME) composer install
-
-# Objectiu per construir la imatge Docker
+## build: Build Docker image and install Composer dependencies
 build:
 	docker build -t $(IMAGE_NAME) .
+	docker run --rm -v $(PWD):/app -w /app $(IMAGE_NAME) composer install
 
-# Executa l'script PHP
+## run: Run the PHP script, plays automatically until winning
 run:
 	docker run --rm -v $(PWD):/app -w /app $(IMAGE_NAME) php game.php
 
+## run-bysteps: Run the PHP script interactively step by step
 run-bysteps:
 	docker run --rm -it -v $(PWD):/app -w /app $(IMAGE_NAME) php game.php --bysteps
 
-# Executa els tests Behat
+## test: Run Behat tests
 test:
 	docker run --rm -v $(PWD):/app -w /app $(IMAGE_NAME) bin/behat
+
+## help: Show this help message
+help:
+	@echo "SnakesAndLadders - Available commands:"
+	@echo ""
+	@sed -n 's/^##//p' ${MAKEFILE_LIST} | column -t -s ':' | sed -e 's/^/ /'
