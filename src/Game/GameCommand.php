@@ -19,7 +19,7 @@ class GameCommand extends Command
     /**
      * configure command
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('SnakesAndLadders Game')
              ->setDescription('SnakesAndLadders game frontend to play and test the SnakesAndLadders Library from Voxel Kata')
@@ -39,7 +39,7 @@ class GameCommand extends Command
      * @param OutputInterface $output
      * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     { 
         $game = new Game();
         $player = $game->addPlayer();
@@ -77,7 +77,7 @@ class GameCommand extends Command
             {
                 if (!$helper->ask($input, $output, $question)) 
                 {
-                    exit;
+                    return Command::FAILURE;
                 }
             }
         }
@@ -87,7 +87,7 @@ class GameCommand extends Command
             $output->writeln("Player WIN!!!!");
         }
 
-        return 0;       
+        return Command::SUCCESS;       
     }
 
 }
